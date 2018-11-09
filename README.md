@@ -7,5 +7,8 @@ algorithm to try to predict how movies will fair (IMDB scoring-wise) given a set
 # Data
 For now I'm testing out the python module <tt>tmdbsimple</tt>. Details can be had [here](https://pypi.org/project/tmdbsimple/).
 
+# Repository Design
+For both R and python, I've broken this repository into two: /development and /toolbox. The dev folder has my in-progress functions while /toolbox has the finalized code.
+
 # Progress
 * __10/04/2018__ Created repository and started testing <tt>tmdbsimple</tt>.
