@@ -1,0 +1,81 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# LA Jobs Project for Kaggle
+# John McKay
+# Created May 14 2019
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+###################################################################################################
+# Preliminaries
+###################################################################################################
+
+## Libraries
+# ...
+
+## Globals
+# Note that for data, we just focus the code on the text files.
+DATAPATH <- file.path("D:", "Kaggle", "data", "LA-Jobs", "CityofLA", "Job Bulletins")
+
+###################################################################################################
+# Custom Data Reader
+# We Want to be able to read in the job descriptions in an orderly fashion as to construct the 
+# needed CSV files that we will then use to perform exploratory analysis.
+###################################################################################################
+csvExample <- list(
+  fileName="character",
+  jobClassTitle="character", 
+  jobClassNum="numeric",
+  reqSetID="numeric",
+  reqSubSetID="character",
+  jobDuties="character",
+  eduYears="numeric",
+  schoolType="character",
+  eduMajor="character",
+  expLength="numeric",
+  fullOrPart="character",
+  expJobClassTitle="character",
+  expJobClassAltResp="character",
+  expJobClassFunction="character",
+  courseCount="numeric",
+  courseLength="numeric",
+  courseSubject="character",
+  miscCourseDetails="character",
+  driversLic="character",
+  driversLicType="character",
+  addtlLic="character",
+  examType="character",
+  entrySalaryGen="character",
+  entrySalaryDWP="character",
+  openDate="character"
+)
+csvInspect <- list(
+  jobName="character",
+  classCode="numeric",
+  openDate="character",
+  revDate="character",
+  openCityEmployees="logical",
+  salaryLow="numeric",
+  saralyHigh="numeric",
+  salaryNote="character",
+  duties="character",
+  requirements="list",
+  processNotes="list",
+  where2Apply="character",
+  applyNote="character",
+  applyDate="character",
+  selectionProcess="character",
+  selectionNote="character"
+)
+job <- setRefClass(
+  "Job Posting",
+  fields = csvInspect
+)
+
+###################################################################################################
+# Read In Job Bulletins
+###################################################################################################
+jobPosts <- list.files(DATAPATH)
+numPosts <- length(jobPosts)
+for(n in seq(numPosts)){
+  temp <- readLines(file.path(DATAPATH, jobPosts[n]))
+  temp <- temp[which(temp!="")]
+}
