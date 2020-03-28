@@ -13,15 +13,16 @@ https://towardsdatascience.com/a-beginners-guide-on-sentiment-analysis-with-rnn-
 # System Imports
 
 # 3rd Party Imports
-from tensorflow import Keras
+from tensorflow import keras
 
 
 # === Keras Models
 
 
 def sentiNet(
-    input_shape,
-    activation,
+    vocab_size,
+    embed_size,
+    words_size,
 ):
     """
     Sentiment Analysis Network
@@ -39,7 +40,16 @@ def sentiNet(
         RNN network for sentiment analysis.
     """
 
-    net = keras.Sq
+    net = keras.Sequential()
+    net.add(keras.layers.Embedding(
+        vocab_size,
+        embed_size,
+        input_length=words_size
+    ))
+    net.add(keras.layers.LSTM(100))
+    net.add(keras.layers.Dense(1, activation='sigmoid'))
+
+    return net
 #
 
 
