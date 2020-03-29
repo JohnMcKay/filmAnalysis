@@ -1,2 +1,5 @@
 # Ignore PNG images 
 pngs/
+
+# Remoe caches
+__pycache__
